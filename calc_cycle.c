@@ -1,48 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-void print_map(int row_n, int col_n, int map[row_n][col_n]);
-int calc_next(int me, int others[]);
-void next_map(int row_n, int col_n, int mapA[row_n][col_n], int mapB[row_n][col_n]);
-
-
-int main(void){
-
-    int map1[10][10];
-    int map2[10][10];
-
-    for(int i = 0; i < 10; i++) {
-        for(int j = 0; j < 10; j++) {
-            map1[i][j] = rand() % 2;
-        }
-    }
-
-    printf("cycle:1\n");
-    print_map(10, 10, map1);
-    printf("\n");
-
-    for(int i = 1; i < 5; i++) {
-        next_map(10, 10, map1, map2);
-
-        printf("cycle:%d\n", i + 1);
-        print_map(10, 10, map2);
-        printf("\n");
-
-        memcpy(map1, map2, sizeof(map2));
-    }
-
-    return 0;
-}
-
-void print_map(int row_n, int col_n, int map[row_n][col_n]) {
-    for(int i = 0; i < row_n; i++) {
-        for(int j = 0; j < col_n; j++) {
-            printf("%d ", map[i][j]);
-        }
-        printf("\n");
-    }
-}
+#include "lg.h"
 
 int calc_next(int me, int others[]){
     int sum = 0;
@@ -51,10 +7,11 @@ int calc_next(int me, int others[]){
     }
 
     if(me == 0 && sum == 3) return 1;
-    if(me == 1 && (sum == 2) || (sum == 3)) return 1;
+    if(me == 1 && ((sum == 2) || (sum == 3))) return 1;
 
     return 0;
 }
+
 
 void next_map(int row_n, int col_n, int mapA[row_n][col_n], int mapB[row_n][col_n]){
     for(int i = 0; i < row_n; i++) {
