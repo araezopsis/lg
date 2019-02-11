@@ -2,6 +2,8 @@
 
 #define RN 50
 #define CN 40
+#define SPEED 10000
+
 int main(void){
 
     int map1[RN][CN];
@@ -20,7 +22,7 @@ int main(void){
     printw("cycle:1\n");
     print_map(RN, CN, map1);
     refresh();
-    usleep(100000);
+    usleep(SPEED);
 
     for(int i = 1; i < 1000; i++) {
         next_map(RN, CN, map1, map2);
@@ -29,7 +31,7 @@ int main(void){
         printw("cycle:%d\n", i + 1);
         print_map(RN, CN, map2);
         refresh();
-        usleep(100000);
+        usleep(SPEED);
 
         memcpy(map1, map2, sizeof(map2));
     }
