@@ -11,20 +11,29 @@ int main(void){
         }
     }
 
+    initscr();
+    cbreak();
 
-    printf("cycle:1\n");
+    erase();
+    printw("cycle:1\n");
     print_map(10, 10, map1);
-    printf("\n");
+    refresh();
+    usleep(100000);
 
-    for(int i = 1; i < 5; i++) {
+    for(int i = 1; i < 1000; i++) {
         next_map(10, 10, map1, map2);
 
-        printf("cycle:%d\n", i + 1);
+        erase();
+        printw("cycle:%d\n", i + 1);
         print_map(10, 10, map2);
-        printf("\n");
+        refresh();
+        usleep(100000);
 
         memcpy(map1, map2, sizeof(map2));
     }
+
+    getch();
+    endwin();
 
     return 0;
 }
