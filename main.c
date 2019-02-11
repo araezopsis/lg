@@ -9,6 +9,8 @@ int main(void){
     int map1[RN][CN];
     int map2[RN][CN];
 
+    srand((unsigned)time(NULL));
+
     for(int i = 0; i < RN; i++) {
         for(int j = 0; j < CN; j++) {
             map1[i][j] = rand() % 2;
