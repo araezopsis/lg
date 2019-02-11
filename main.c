@@ -1,12 +1,14 @@
 #include "lg.h"
 
+#define RN 50
+#define CN 40
 int main(void){
 
-    int map1[10][10];
-    int map2[10][10];
+    int map1[RN][CN];
+    int map2[RN][CN];
 
-    for(int i = 0; i < 10; i++) {
-        for(int j = 0; j < 10; j++) {
+    for(int i = 0; i < RN; i++) {
+        for(int j = 0; j < CN; j++) {
             map1[i][j] = rand() % 2;
         }
     }
@@ -16,16 +18,16 @@ int main(void){
 
     erase();
     printw("cycle:1\n");
-    print_map(10, 10, map1);
+    print_map(RN, CN, map1);
     refresh();
     usleep(100000);
 
     for(int i = 1; i < 1000; i++) {
-        next_map(10, 10, map1, map2);
+        next_map(RN, CN, map1, map2);
 
         erase();
         printw("cycle:%d\n", i + 1);
-        print_map(10, 10, map2);
+        print_map(RN, CN, map2);
         refresh();
         usleep(100000);
 
