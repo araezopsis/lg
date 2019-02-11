@@ -3,7 +3,7 @@ SRCS=$(wildcard *.c)
 OBJS=$(SRCS:.c=.o)
 
 lg: $(OBJS)
-	gcc -o lg $(OBJS) $(LDFLAGS) -lncurses
+	gcc -o lg $(OBJS) $(LDFLAGS) -lncursesw
 
 $(OBJS): lg.h
 

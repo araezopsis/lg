@@ -7,4 +7,3 @@
 void print_map(int row_n, int col_n, int map[row_n][col_n]);
 int calc_next(int me, int others[]);
 void next_map(int row_n, int col_n, int mapA[row_n][col_n], int mapB[row_n][col_n]);
-
