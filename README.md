@@ -1,5 +1,5 @@
 # lg
-Lifegame written by C
+Lifegame written in C
 
 ## ToDo
 * 引数設定でプログラム実行時に変数を設定できるように
