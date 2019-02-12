@@ -1,10 +1,11 @@
 #include "lg.h"
 
-#define RN 50
-#define CN 40
-#define SPEED 10000
 
 int main(void){
+    /*  DEFAULT PARAMETER  */
+    int RN = 50;            // 50 character
+    int CN = 80;            // 80 character
+    int DELAY = 50 * 1000;  // 50 msec
 
     int map1[RN][CN];
     int map2[RN][CN];
@@ -24,7 +25,7 @@ int main(void){
     printw("cycle:1\n");
     print_map(RN, CN, map1);
     refresh();
-    usleep(SPEED);
+    usleep(DELAY);
 
     int i = 1;
     while(1) {
@@ -34,7 +35,7 @@ int main(void){
         printw("cycle:%d\n", i + 1);
         print_map(RN, CN, map2);
         refresh();
-        usleep(SPEED);
+        usleep(DELAY);
 
         memcpy(map1, map2, sizeof(map2));
     }
