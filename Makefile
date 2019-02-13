@@ -8,4 +8,4 @@ lg: $(OBJS)
 $(OBJS): lg.h
 
 clean:
-	rm -f tocc *.o
+	rm -f lg *.o
