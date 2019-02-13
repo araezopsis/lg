@@ -14,3 +14,4 @@ void print_map(int row_n, int col_n, int map[row_n][col_n]) {
         printw("%s \n", row_string);
     }
 }
+

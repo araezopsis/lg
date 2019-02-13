@@ -5,7 +5,30 @@ int RN = 50;            // 50 character
 int CN = 80;            // 80 character
 int DELAY = 50 * 1000;  // 50 msec
 
-int main(void){
+int main(int argc, char** argv) {
+
+    /* PARSE ARGUMENTS */
+    if(argc >= 2) {
+        flag_info temp_arg;
+        for(int i = 0; i < argc; i++) {
+            temp_arg = arg_parser(argv[i]);
+            switch(temp_arg.flag) {
+                case FLAG_ROW:
+                    RN = atoi(temp_arg.string);
+                    break;
+                case FLAG_COL:
+                    CN = atoi(temp_arg.string);
+                    break;
+                case FLAG_DELAY:
+                    DELAY = atoi(temp_arg.string) * 1000;
+                    break;
+                case FLAG_HELP:
+                    print_usage();
+                    return 0;
+                    break;
+            }
+        }
+    }
 
     int map1[RN][CN];
     int map2[RN][CN];
