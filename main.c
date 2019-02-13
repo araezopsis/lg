@@ -1,11 +1,11 @@
 #include "lg.h"
 
+/*  DEFAULT PARAMETER  */
+int RN = 50;            // 50 character
+int CN = 80;            // 80 character
+int DELAY = 50 * 1000;  // 50 msec
 
 int main(void){
-    /*  DEFAULT PARAMETER  */
-    int RN = 50;            // 50 character
-    int CN = 80;            // 80 character
-    int DELAY = 50 * 1000;  // 50 msec
 
     int map1[RN][CN];
     int map2[RN][CN];
