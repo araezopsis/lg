@@ -10,6 +10,7 @@ int main(void){
     int map1[RN][CN];
     int map2[RN][CN];
 
+    /* SET SEED VALUE OF RANDOM NUMBER */
     srand((unsigned)time(NULL));
 
     for(int i = 0; i < RN; i++) {
@@ -21,7 +22,6 @@ int main(void){
     initscr();
     cbreak();
 
-    erase();
     printw("cycle:1\n");
     print_map(RN, CN, map1);
     refresh();
