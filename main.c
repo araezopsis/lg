@@ -29,15 +29,14 @@ int main(void){
 
     int i = 1;
     while(1) {
-        i++;
         next_map(RN, CN, map1, map2);
         erase();
         printw("cycle:%d\n", i + 1);
         print_map(RN, CN, map2);
         refresh();
         usleep(DELAY);
-
         memcpy(map1, map2, sizeof(map2));
+        i++;
     }
 
     getch();
