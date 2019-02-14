@@ -1,6 +1,8 @@
 # lg
 Lifegame written in C
 
+[![Build Status](https://travis-ci.org/araezopsis/lg.svg?branch=master)](https://travis-ci.org/araezopsis/lg)
+
 ## ToDo
 - [x] 引数設定でプログラム実行時に変数を設定できるように
 - [ ] ファイルからセルをリストア
