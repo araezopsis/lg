@@ -30,7 +30,7 @@ extern int DELAY;
 void print_usage(void);
 flag_info arg_parser(char* arg);
 
-void print_map(int row_n, int col_n, int map[row_n][col_n]);
+void print_map(int row_n, int col_n, int map[]);
 
 int calc_next(int me, int others[]);
-void next_map(int row_n, int col_n, int mapA[row_n][col_n], int mapB[row_n][col_n]);
+void next_map(int row_n, int col_n, int mapA[], int mapB[]);

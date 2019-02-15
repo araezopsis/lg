@@ -12,48 +12,47 @@ int calc_next(int me, int others[]){
     return 0;
 }
 
-
-void next_map(int row_n, int col_n, int mapA[row_n][col_n], int mapB[row_n][col_n]){
+void next_map(int row_n, int col_n, int mapA[], int mapB[]) {
     for(int i = 0; i < row_n; i++) {
         for(int j = 0; j < col_n; j++) {
-            int tit, tib, tjl, tjr;
+            int it, ib, jl, jr;
 
             switch(i) {
-                case 0: tit = row_n-1; break;
-                default: tit = i - 1; break;
+                case 0: it = row_n - 1; break;
+                default: it = i - 1; break;
             }
 
             if(i == (row_n - 1)) {
-                tib = 0;
+                ib = 0;
             } else {
-                tib = i + 1;
+                ib = i + 1;
             }
 
             switch(j) {
-                case 0: tjl = col_n-1; break;
-                default: tjl = j - 1; break;
+                case 0: jl = col_n - 1; break;
+                default: jl = j - 1; break;
             }
 
             if(j == (col_n - 1)) {
-                tjr = 0;
+                jr = 0;
             } else {
-                tjr = j + 1;
+                jr = j + 1;
             }
 
             int temp_others[] = {
-                mapA[tit][tjl],
-                mapA[tit][j],
-                mapA[tit][tjr],
+                mapA[it * col_n + jl],
+                mapA[it * col_n + j],
+                mapA[it * col_n + jr],
 
-                mapA[i][tjl],
-                mapA[i][tjr],
+                mapA[i * col_n + jl],
+                mapA[i * col_n + jr],
 
-                mapA[tib][tjl],
-                mapA[tib][j],
-                mapA[tib][tjr]
+                mapA[ib * col_n + jl],
+                mapA[ib * col_n + j],
+                mapA[ib * col_n + jr]
             };
 
-            mapB[i][j] = calc_next(mapA[i][j], temp_others);
+            mapB[i * col_n + j] = calc_next(mapA[i * col_n + j], temp_others);
         }
     }
 }

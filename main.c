@@ -30,17 +30,14 @@ int main(int argc, char** argv) {
         }
     }
 
-    int map1[RN][CN];
-    int map2[RN][CN];
-    int map3[RN][CN];
+    int RCN = RN * CN;
+    int map[RN * CN * 3];
 
     /* SET SEED VALUE OF RANDOM NUMBER */
     srand((unsigned)time(NULL));
 
-    for(int i = 0; i < RN; i++) {
-        for(int j = 0; j < CN; j++) {
-            map1[i][j] = rand() % 2;
-        }
+    for (int i = 0; i < (sizeof(map) / sizeof(map[0])); i++) {
+        map[i] = rand() % 2;
     }
 
     initscr();
@@ -49,17 +46,25 @@ int main(int argc, char** argv) {
     int i = 1;
     int loop = 1;
     do {
-        next_map(RN, CN, map1, map2);
         erase();
         printw("cycle:%d\n", i);
-        print_map(RN, CN, map1);
+        print_map(RN, CN, &map[0]);
+
+        for (int j = 3-1; j > 0; j--) {
+            memcpy(&map[RCN*j], &map[RCN*(j-1)], sizeof(int)*RCN);
+        }
+
+        next_map(RN, CN, &map[RCN], &map[0]);
+
         refresh();
         usleep(DELAY);
 
-        if(i > 1) if(memcmp(map2, map3, sizeof(map3)) == 0) loop = 0;
+        if(i > 1) {
+            if(memcmp(&map[0], &map[RCN*2], sizeof(int)*RCN) == 0) {
+                loop = 0;
+            }
+        }
 
-        memcpy(map3, map1, sizeof(map3));
-        memcpy(map1, map2, sizeof(map2));
         i++;
     } while(loop);
 
@@ -68,4 +73,3 @@ int main(int argc, char** argv) {
 
     return 0;
 }
-
