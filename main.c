@@ -32,6 +32,7 @@ int main(int argc, char** argv) {
 
     int map1[RN][CN];
     int map2[RN][CN];
+    int map3[RN][CN];
 
     /* SET SEED VALUE OF RANDOM NUMBER */
     srand((unsigned)time(NULL));
@@ -54,6 +55,10 @@ int main(int argc, char** argv) {
         print_map(RN, CN, map1);
         refresh();
         usleep(DELAY);
+
+        if(i > 1) if(memcmp(map2, map3, sizeof(map3)) == 0) loop = 0;
+
+        memcpy(map3, map1, sizeof(map3));
         memcpy(map1, map2, sizeof(map2));
         i++;
     } while(loop);
