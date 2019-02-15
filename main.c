@@ -45,22 +45,18 @@ int main(int argc, char** argv) {
     initscr();
     cbreak();
 
-    printw("cycle:1\n");
-    print_map(RN, CN, map1);
-    refresh();
-    usleep(DELAY);
-
     int i = 1;
-    while(1) {
+    int loop = 1;
+    do {
         next_map(RN, CN, map1, map2);
         erase();
-        printw("cycle:%d\n", i + 1);
-        print_map(RN, CN, map2);
+        printw("cycle:%d\n", i);
+        print_map(RN, CN, map1);
         refresh();
         usleep(DELAY);
         memcpy(map1, map2, sizeof(map2));
         i++;
-    }
+    } while(loop);
 
     getch();
     endwin();
